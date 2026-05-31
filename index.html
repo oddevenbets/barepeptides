@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Baretides supplies research-use peptides with a clear catalog, product images, and Stripe-ready cart flow."
+    />
+    <title>Baretides | Research Peptides</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="preload" href="logo.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg aria-hidden="true" class="icon-sprite">
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+        <path d="M6 11h12v9H6z" />
+        <path d="M12 15v2" />
+      </symbol>
+      <symbol id="icon-box" viewBox="0 0 24 24">
+        <path d="m3 7 9-4 9 4-9 4z" />
+        <path d="M3 7v10l9 4 9-4V7" />
+        <path d="M12 11v10" />
+      </symbol>
+      <symbol id="icon-flask" viewBox="0 0 24 24">
+        <path d="M9 3h6" />
+        <path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3" />
+        <path d="M7 16h10" />
+      </symbol>
+      <symbol id="icon-card" viewBox="0 0 24 24">
+        <path d="M3 6h18v12H3z" />
+        <path d="M3 10h18" />
+        <path d="M7 15h4" />
+      </symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24">
+        <path d="M4 6h16v12H4z" />
+        <path d="m4 7 8 6 8-6" />
+      </symbol>
+      <symbol id="icon-file" viewBox="0 0 24 24">
+        <path d="M7 3h7l3 3v15H7z" />
+        <path d="M14 3v4h4" />
+        <path d="M9 12h6" />
+        <path d="M9 16h6" />
+      </symbol>
+      <symbol id="icon-truck" viewBox="0 0 24 24">
+        <path d="M3 6h11v10H3z" />
+        <path d="M14 10h4l3 3v3h-7z" />
+        <path d="M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+        <path d="M18 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+      </symbol>
+      <symbol id="icon-tag" viewBox="0 0 24 24">
+        <path d="M20 13 13 20 4 11V4h7z" />
+        <path d="M8 8h.01" />
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+        <path d="M4 21a8 8 0 0 1 16 0" />
+      </symbol>
+    </svg>
+
+    <div class="store-bar">
+      <span><img class="asset-icon" src="/shipping.svg" alt="" /> Free shipping on all orders</span>
+      <span><img class="asset-icon" src="/vial-svgrepo-com.svg" alt="" /> Launch pricing active for a limited time</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Baretides home">
+        <img src="logo.png" alt="" class="brand__mark" />
+        <span class="brand__text">baretides</span>
+      </a>
+
+      <div class="header-actions" aria-label="Store actions">
+        <button class="cart-button" type="button" data-open-cart aria-label="Open cart">
+          <img class="asset-icon" src="/cart.svg" alt="" />
+          <span>Cart</span>
+          <span class="cart-button__count" data-cart-count>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Baretides research catalog</p>
+          <h1>Premium research peptides for qualified buyers.</h1>
+          <p class="hero__lead">
+            Explore a clearly organized catalog, choose vial size, review transparent pricing, and complete checkout securely through Stripe.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#catalog">Shop catalog</a>
+            <a class="button button--secondary" href="#standards">View standards</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="catalog">
+        <div class="section__heading">
+          <p class="eyebrow">Shop</p>
+          <h2>Peptide catalog</h2>
+          <p>
+            Product cards include vial imagery, selectable sizes, research categories, and cart actions ready for a server-side Stripe checkout session.
+          </p>
+        </div>
+
+        <div class="toolbar" aria-label="Catalog controls">
+          <label class="search">
+            <span class="visually-hidden">Search products</span>
+            <input type="search" data-search placeholder="Search peptide name" autocomplete="off" />
+          </label>
+          <span class="catalog-note">Research use only. Not for human or animal use.</span>
+        </div>
+
+        <div class="product-grid" data-product-grid aria-live="polite"></div>
+      </section>
+
+      <section class="band" id="standards">
+        <div class="band__content">
+          <p class="eyebrow">Store standards</p>
+          <h2>Built for serious research ordering.</h2>
+          <p>
+            Baretides is organized around a growing peptide catalog, documented quality expectations, and responsive order support.
+          </p>
+        </div>
+        <div class="quality-list">
+          <article>
+            <span class="quality-list__index">01</span>
+            <h3>Expanding catalog</h3>
+            <p>We carry a focused peptide selection today, with more compounds and additional fill-size options planned as inventory expands.</p>
+          </article>
+          <article>
+            <span class="quality-list__index">02</span>
+            <h3>Quality documentation</h3>
+            <p>Products are sourced against a 99% purity standard and supported by U.S.-based Certificate of Analysis documentation when available.</p>
+          </article>
+          <article>
+            <span class="quality-list__index">03</span>
+            <h3>Customer care</h3>
+            <p>We work to keep transactions smooth and responsive. For order help, contact barepeptides@proton.me.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--split" id="compliance">
+        <div>
+          <p class="eyebrow">Compliance</p>
+          <h2>For laboratory research use only.</h2>
+        </div>
+        <div class="compliance-copy">
+          <p>
+            Products listed on this site are not medicines, foods, cosmetics, or dietary supplements. They are not intended to diagnose, treat, cure, or prevent disease.
+          </p>
+          <p>
+            Purchasers are responsible for understanding and following all applicable laws, institutional requirements, and safe laboratory handling practices.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <aside class="cart-drawer" data-cart-drawer aria-hidden="true" aria-label="Shopping cart">
+      <div class="cart-drawer__backdrop" data-close-cart></div>
+      <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="cart-drawer__header">
+          <div>
+            <p class="eyebrow">Order draft</p>
+            <h2 id="cart-title"><img class="asset-icon" src="/vial-svgrepo-com.svg" alt="" /> Cart</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-cart aria-label="Close cart">x</button>
+        </div>
+
+        <div class="cart-items" data-cart-items></div>
+
+        <div class="cart-summary">
+          <div>
+            <span><img class="asset-icon" src="/shipping.svg" alt="" /> Shipping</span>
+            <strong>Free</strong>
+          </div>
+          <div>
+            <span>Subtotal</span>
+            <strong data-cart-subtotal>$0</strong>
+          </div>
+        </div>
+
+        <button class="button button--primary button--full" type="button" data-checkout>
+          <img class="asset-icon" src="/stripe-svgrepo-com.svg" alt="" />
+          Checkout securely
+        </button>
+        <p class="cart-drawer__fineprint">
+          Email, payment, and address details are collected securely by Stripe Checkout.
+        </p>
+      </div>
+    </aside>
+
+    <aside class="agreement-modal" data-agreement-modal aria-hidden="true" aria-label="Purchaser acknowledgement">
+      <div class="agreement-modal__backdrop" data-decline-agreement></div>
+      <div class="agreement-modal__panel" role="dialog" aria-modal="true" aria-labelledby="agreement-title">
+        <p class="eyebrow">Required acknowledgement</p>
+        <h2 id="agreement-title">Before adding this product</h2>
+        <p>
+          By continuing, you confirm that every product sold by Baretides is intended solely for lawful laboratory research and is not for human or animal consumption.
+        </p>
+        <p>
+          You also confirm that you are at least 21 years old and that purchasing research peptides is permitted in your location.
+        </p>
+        <div class="agreement-modal__actions">
+          <button class="button button--secondary" type="button" data-decline-agreement>Cancel</button>
+          <button class="button button--primary" type="button" data-accept-agreement>I agree</button>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="footer">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Baretides home">
+          <img src="logo.png" alt="" class="brand__mark" />
+          <span class="brand__text">baretides</span>
+        </a>
+        <p>Research peptides with a clean catalog, persistent cart, and secure Stripe checkout.</p>
+        <div class="footer__badges" aria-label="Checkout badges">
+          <span><img class="asset-icon" src="/shipping.svg" alt="" /> Free shipping</span>
+          <span><img class="asset-icon" src="/stripe-svgrepo-com.svg" alt="" /> Stripe payments</span>
+        </div>
+      </div>
+
+      <div class="footer__columns">
+        <div>
+          <h3>Shop</h3>
+          <a href="#catalog">Peptide catalog</a>
+          <a href="#standards">Store standards</a>
+        </div>
+        <div>
+          <h3>Policies</h3>
+          <a href="#" data-open-policy="general">General terms</a>
+          <a href="#" data-open-policy="research">Research-use terms</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>For research use only. Not for human or animal use.</p>
+        <p>Purchasers must be 21+ and located where research peptide purchases are permitted.</p>
+      </div>
+    </footer>
+
+    <aside class="policy-modal" data-policy-modal aria-hidden="true" aria-label="Store policy">
+      <div class="policy-modal__backdrop" data-close-policy></div>
+      <div class="policy-modal__panel" role="dialog" aria-modal="true" aria-labelledby="policy-title">
+        <button class="icon-button policy-modal__close" type="button" data-close-policy aria-label="Close policy">x</button>
+        <div data-policy-content></div>
+      </div>
+    </aside>
+
+    <script src="catalog.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baretides | Order Status</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="success.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Baretides home">
+        <img src="logo.png" alt="" class="brand__mark" />
+        <span class="brand__text">baretides</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="/#catalog">Shop</a>
+        <a href="/#standards">Standards</a>
+        <a href="/#compliance">Compliance</a>
+      </nav>
+    </header>
+
+    <main class="status-page">
+      <section class="status-card" data-status-card>
+        <p class="eyebrow">Checkout status</p>
+        <h1 data-status-title>Checking your order...</h1>
+        <p data-status-message>
+          We are confirming the payment status with Stripe.
+        </p>
+        <dl class="status-details" data-status-details hidden></dl>
+        <a class="button button--primary" href="/#catalog">Return to catalog</a>
+      </section>
+    </main>
+  </body>
+</html>
