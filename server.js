@@ -19,7 +19,15 @@ const publicSiteUrl = normalizeSiteUrl(
   env.PUBLIC_SITE_URL ||
   "https://baretides.shop",
 );
-const allowedCountries = (process.env.STRIPE_ALLOWED_COUNTRIES || env.STRIPE_ALLOWED_COUNTRIES || "US")
+const defaultAllowedCountries = [
+  "US", "CA", "GB", "IE", "AU", "NZ",
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU",
+  "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE",
+  "CH", "NO", "IS", "LI", "MX", "BR", "CL", "CO", "CR", "PE", "UY",
+  "JP", "KR", "SG", "HK", "IN", "MY", "TH", "PH", "ID", "VN",
+  "AE", "SA", "IL", "ZA",
+];
+const allowedCountries = (process.env.STRIPE_ALLOWED_COUNTRIES || env.STRIPE_ALLOWED_COUNTRIES || defaultAllowedCountries.join(","))
   .split(",")
   .map((country) => country.trim().toUpperCase())
   .filter(Boolean);

@@ -53,10 +53,15 @@ For Render, do not rely on a checked-in `.env` file. Add these in the Render das
 ```txt
 STRIPE_SECRET_KEY=sk_live_...
 PUBLIC_SITE_URL=https://baretides.shop
-STRIPE_ALLOWED_COUNTRIES=US
 ```
 
 `PUBLIC_SITE_URL` is used for Stripe `success_url` and `cancel_url`. Localhost testing still uses the local origin automatically.
+
+By default, checkout allows shipping addresses from a broad list of major countries. To restrict or customize the list, add:
+
+```txt
+STRIPE_ALLOWED_COUNTRIES=US,CA,GB,AU
+```
 
 ## Adding vial sizes
 
