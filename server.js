@@ -8,7 +8,17 @@ const rootDir = __dirname;
 const rootDirWithSeparator = rootDir.endsWith(path.sep) ? rootDir : `${rootDir}${path.sep}`;
 const port = Number(process.env.PORT || 4242);
 const env = loadEnv(path.join(rootDir, ".env"));
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY || env.STRIPE_SECRET_KEY || env.LIVEKEY;
+const stripeSecretKey =
+  process.env.STRIPE_SECRET_KEY ||
+  process.env.LIVEKEY ||
+  env.STRIPE_SECRET_KEY ||
+  env.LIVEKEY;
+const publicSiteUrl = normalizeSiteUrl(
+  process.env.PUBLIC_SITE_URL ||
+  process.env.RENDER_EXTERNAL_URL ||
+  env.PUBLIC_SITE_URL ||
+  "https://baretides.shop",
+);
 const allowedCountries = (process.env.STRIPE_ALLOWED_COUNTRIES || env.STRIPE_ALLOWED_COUNTRIES || "US")
   .split(",")
   .map((country) => country.trim().toUpperCase())
@@ -56,7 +66,9 @@ server.listen(port, () => {
 
 async function createCheckoutSession(request, response) {
   if (!stripeSecretKey) {
-    sendJson(response, 500, { error: "Stripe secret key is missing from .env." });
+    sendJson(response, 500, {
+      error: "Stripe secret key is missing. Add STRIPE_SECRET_KEY in Render Environment Variables.",
+    });
     return;
   }
 
@@ -73,7 +85,7 @@ async function createCheckoutSession(request, response) {
     return;
   }
 
-  const origin = getOrigin(request);
+  const origin = getPublicOrigin(request);
   const params = {
     mode: "payment",
     billing_address_collection: "required",
@@ -108,7 +120,9 @@ async function createCheckoutSession(request, response) {
 
 async function getCheckoutSession(url, response) {
   if (!stripeSecretKey) {
-    sendJson(response, 500, { error: "Stripe secret key is missing from .env." });
+    sendJson(response, 500, {
+      error: "Stripe secret key is missing. Add STRIPE_SECRET_KEY in Render Environment Variables.",
+    });
     return;
   }
 
@@ -281,6 +295,20 @@ function getOrigin(request) {
   const protocol = request.headers["x-forwarded-proto"] || "http";
   const host = request.headers.host || `localhost:${port}`;
   return `${protocol}://${host}`;
+}
+
+function getPublicOrigin(request) {
+  const requestOrigin = getOrigin(request);
+
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(requestOrigin)) {
+    return requestOrigin;
+  }
+
+  return publicSiteUrl;
+}
+
+function normalizeSiteUrl(value) {
+  return String(value || "").replace(/\/+$/, "");
 }
 
 function dollarsToCents(value) {

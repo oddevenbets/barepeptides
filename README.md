@@ -46,6 +46,18 @@ Optional:
 STRIPE_ALLOWED_COUNTRIES=US,CA
 ```
 
+## Render production variables
+
+For Render, do not rely on a checked-in `.env` file. Add these in the Render dashboard under Environment Variables:
+
+```txt
+STRIPE_SECRET_KEY=sk_live_...
+PUBLIC_SITE_URL=https://baretides.shop
+STRIPE_ALLOWED_COUNTRIES=US
+```
+
+`PUBLIC_SITE_URL` is used for Stripe `success_url` and `cancel_url`. Localhost testing still uses the local origin automatically.
+
 ## Adding vial sizes
 
 Each product in `app.js` has a `variants` array. Add more sizes by adding entries like:
